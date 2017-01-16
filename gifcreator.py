@@ -8,7 +8,7 @@ import tempfile #to know the temp directory of the os / para saber en qué direc
 parser = argparse.ArgumentParser(description='Script to create fast and high quality gif or swf files / Scripts para crear rapidamente archivos gif y swf')
 parser.add_argument('video',help='The input video / El video de entrada')
 parser.add_argument('-s','--swf',help='If the output is an swf / Si se desea un swf', action='store_true')
-parser.add_argument('-sub','--subtitulos',help='If you want the file with subtitles / Si se desean subtitulos', action='store_true')
+parser.add_argument('-sub','--subtitles',help='If you want the file with subtitles / Si se desean subtitulos', action='store_true')
 parser.add_argument('tiempoini',help='Start time / Tiempo de Inicio')
 parser.add_argument('duracion',help='Lenght / Duración ')
 parser.add_argument('-f','--fps',default=12,help='Frames per second / Frames por segundo')
@@ -68,9 +68,9 @@ else:
 #THE ON TESTS "TUMBLR-EFFECT" / EL "EFECTO TUMBLR" QUE ESTÁ EN PRUEBAS
 if ext == '.gif' and args.tumblr:
     if os.name == 'nt':
-        subprocess.call('magick convert ' + args.sali + ext + ' -level 10%,70% ' + args.sali + ext, shell=True)
+        subprocess.call('magick convert ' + args.sali + ext + ' -level 25%,90% ' + args.sali + ext, shell=True)
     else:
-        subprocess.call('convert ' + args.sali + ext + ' -level 10%,70% ' + args.sali + ext, shell=True)
+        subprocess.call('convert ' + args.sali + ext + ' -level 25%,90% ' + args.sali + ext, shell=True)
 
 #NOT USED WAYS TO CREATE THE TUMBLR-EFFECT    
 #convert -contrast $nom $nom
