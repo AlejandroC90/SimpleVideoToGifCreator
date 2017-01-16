@@ -45,7 +45,7 @@ ext = ".gif"
 #IN THE CASE OF A SWF FILE / SI ES EL CASO PARA HACER UN SWF
 if args.swf:
     ext = '.swf'
-    if args.subtitulos:
+    if args.subtitles:
         #IS THE SUBTITLE OPTION IS ENABLED WE CREATE THE SWF WITH THE SUBTITLES
         subprocess.call('ffmpeg -v error' + ' -i ' + '"' + args.video + '" ' + ' -ss ' + args.tiempoini + ' -t ' + args.duracion +  ' -qscale ' + str(args.calidad) + ' -vf' + ' fps=' + str(args.fps) + ',scale=' + str(args.tama) + ':-1' + ',subtitles=' + repr(repr(args.video)) + ' -an ' + args.sali + ext + ' -y', shell=True)
 
@@ -55,7 +55,7 @@ if args.swf:
         
 #IF IS NOT AND SWF THEN IT IS A GIF / SI NO ES UN SWF ENTONCES ES UN GIF
 else:
-    if args.subtitulos:
+    if args.subtitles:
         #IS THE SUBTITLE OPTION IS ENABLED WE CREATE THE GIF WITH THE SUBTITLES BY CREATING A TEMPORARY VIDEO FILE AND THEN CREATING THE GIF FROM THE VIDEO
         subprocess.call('ffmpeg -v error -i ' + '"' + args.video + '"' + ' -ss ' + args.tiempoini + ' -t ' + args.duracion + ' -vf subtitles=' + repr(repr(args.video)) + ' -y ' + video , shell=True)
         subprocess.call('ffmpeg -v error ' + ' -i ' + '"' + video + '"' + ' -vf  "' + 'fps=' + str(args.fps) + ',scale=' + str(args.tama) + ':-1:flags=' + args.filtro + ',palettegen=stats_mode=diff" -y ' + palette , shell=True)
